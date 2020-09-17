@@ -25,8 +25,9 @@ Once you have finished cleaning your data, figure out the course with the highes
 en_fall_2020 <- read_excel("raw_data/class_enrollment_summary_by_term_9-17-2020.xlsx", skip = 3) %>% 
   clean_names() %>% 
   drop_na(course_name) %>% 
+  select(course_id, course_title, u_grad, total) %>% 
   filter(u_grad >= 10) %>% 
-  arrange(u_grad)
+  arrange(desc(total))
 
 view(en_fall_2020)
 
